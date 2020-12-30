@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Permissão e Idade</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+  .center {
+  margin: auto;
+  width: 60%;
+  border: 5px solid #000;
+  padding: 10px;
+}
+</style>
+<body>
+<br>
+
+<form class="center">
+  <div class="form-group">
+    <label>Permissão e Idade</label>
+    <input type="text" class="form-control" id="Mytext" placeholder="Insira sua idade">
+    <small id="demo" class="form-text text-muted"></small>
+  </div>
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Possui CNH?
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Sim</a>
+    <a class="dropdown-item" href="#">Não</a>
+  </div>
+</div>
+<br>
+  <button type="button" class="btn btn-primary" onclick="myFunction()">Verificar...</button>
+</form>
+
+<script>
+var Escolha;
+
+$('.dropdown-item').click(function() {
+  //console.log( $(this).text() );
+  Escolha = $(this).text();
+});
+
+function myFunction() {
+  var x = document.getElementById("Mytext").value;
+  if (x >= 18 && Escolha == "Sim"){
+    document.getElementById("demo").innerHTML = "Pode dirigir por ter permissão e idade";
+    console.log("Pode dirigir por ter permissão e idade")
+  }else{
+    if(x >= 18 && Escolha == "Não"){
+      document.getElementById("demo").innerHTML = "Tem idade para dirigir mas não tem permissão";
+      console.log("Tem idade para dirigir mas não tem permissão")
+    }else{
+      if (x < 18 && Escolha == "Sim"){
+        document.getElementById("demo").innerHTML = "Idade menor de 18 mas possui permissão para dirigir";
+        console.log("Idade menor de 18 mas possui permissão para dirigir")
+      }else{
+        document.getElementById("demo").innerHTML = "Não possui idade, nem permissão para dirigir";
+        console.log("Não possui idade, nem permissão para dirigir")
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
